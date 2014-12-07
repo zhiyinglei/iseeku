@@ -13,3 +13,4 @@ Any problem please contact me with zhiyinglei@yahoo.com. Enjoy.
 
 Demo: 
 http://map.hoyee.com/
+(Please Use Chrome and Firefox for best result)

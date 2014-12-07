@@ -11,5 +11,5 @@ Register -> Add Friends -> See Your Friends On Map
 
 Any problem please contact me with zhiyinglei@yahoo.com. Enjoy. 
 
-Demo is below: 
+Demo: 
 map.hoyee.com 

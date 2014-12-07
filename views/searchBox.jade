@@ -1,0 +1,60 @@
+div
+	div.well.form-inline.center(style='text-align: center;')
+		input.span8(type='text',  autocomplete='off', ng-model="searchFriendName", placeholder = 'Search for people')
+		button.btn.btn-info(type='button',  ng-click="search_submit_click()" title="click to search")
+			| Search
+
+	div(id = "friendsDialog" , title="Your Friends")
+		br
+		div(ng-show="searchListContentShow", ng-model="friend")
+			div(ng-switch on= "searchListContentSwitch" )
+				div(ng-switch-when="0")
+					p No person found
+				div(ng-switch-when="1")
+					p
+						b Add friend: 
+					p
+						| {{ friend.name }} &nbsp;&nbsp;
+						button#submit_addFriend.btn.btn-mini.btn-info(type='button', ng-click="addFriend_submit_click()") Add Friend
+				div(ng-switch-when="e001")
+					p Error occurs, Please try again later.(No.001)
+
+				div(ng-switch-when="2")
+					p Request sent. 
+				div(ng-switch-when="e002")
+					p Error occurs, Please try again later.(No.002)
+
+
+		hr
+
+		div(ng-model="friendList" )
+			p
+				b Friends:
+			p
+				h(ng-repeat="f in friendList.friends") 
+					{{f}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					br(ng-if="($index+1) % 4 == 0")
+
+			hr
+
+			p 
+				b Friend Requests:
+				div(ng-switch on= "friendList.pending_friend.length")
+					p(ng-switch-when="0") &lt;empty&gt;
+					p(ng-switch-default) 
+						p(ng-repeat="pf in friendList.pending_friend")
+							{{pf}} &nbsp;&nbsp;
+							button.btn.btn-mini.btn-info(type='button', ng-click="accept_Friend_submit_click(pf)") Accept
+
+			hr
+
+			p
+				b Requests Sent:
+				div(ng-switch on= "friendList.request_friend.length")
+					p(ng-switch-when="0") &lt;empty&gt;
+					p(ng-switch-default) 
+						p(ng-repeat="rf in friendList.request_friend")
+							{{rf}}
+
+
+

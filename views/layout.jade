@@ -1,0 +1,65 @@
+doctype html
+html(ng-app='iseeu')
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/styles.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/jquery-ui.min.css')
+    link(rel='stylesheet', href='http://cdn.leafletjs.com/leaflet-0.4/leaflet.css')
+    link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Lato:300,400', type='text/css')
+
+
+    script(src='/javascripts/jquery.js')
+    script(src='/javascripts/bootstrap.min.js')
+    script(src='/javascripts/jquery-ui-1.10.3.min.js')
+    script(src='/socket.io/socket.io.js')
+    
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js')
+    
+    script(src='//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js')
+
+
+    script(src='/javascripts/core.js')
+    script(src='/javascripts/controllers/appController.js')
+    //script(src='/javascripts/controllers/mapController.js')
+    script(src='/javascripts/services/userService.js')
+
+
+  body(ng-controller='appController')
+      .navbar.navbar-fixed-top
+        .navbar-inner
+          .container
+            a.btn.btn-navbar(data-toggle='collapse', data-target='.nav-collapse')
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            .nav-collapse
+              ul.nav
+                li.active
+                  a(href='/') HOME
+                - if (user)
+                   li
+                    a(href='/logout') LOGOUT 
+                   li
+                    a(href='#') Hi #{user.name}
+                   li(id='new_msg')
+                    - if (user.pending_friend.length != 0)
+                       a(href='#', style='color: red', ng-click="friends_click()") Friend #{user.pending_friend.length} 
+                    - else
+                       a(href='#', ng-click="friends_click()") Friends
+                - else
+                   li
+                    a(href='/login') LOGIN
+                   li
+                    a(href='/reg') REGISTER
+
+      #container.container
+        - if (msg.error)
+            .alert.alert-error
+              | #{msg.error}
+        - if (msg.success)
+           .alert.alert-success
+              | #{msg.success}
+            script.
+              $(".alert.alert-success").fadeOut(8000);
+      block content

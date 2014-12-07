@@ -1,0 +1,22 @@
+extends layout
+block content
+  form.form-horizontal(method='post', action="/reg")
+    fieldset
+        legend User Register
+        .control-group
+          label.control-label(for='username') User
+          .controls
+            input#username.input-xlarge(type='text', name='username')
+            p.help-block Your user name will be used to login and display 
+        .control-group
+          label.control-label(for='password') Password
+          .controls
+            input#password.input-xlarge(type='password', name='password')
+        .control-group
+          label.control-label(for='password-repeat') Repeat Password
+          .controls
+            input#password-repeat.input-xlarge(type='password', name='password-repeat')
+        .form-actions
+          button.btn.btn-primary(type='submit') Register
+
+

@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  
+
+  - if (user)
+    - var user_name = user.name
+  - else
+    - var user_name = ''
+
+  -if(user) 
+    include searchBox
+
+  .wrapper
+    header
+        h1 Seek Your Friend on Map
+        .description
+          | Register -> Add Friends -> See Your Friends On Map
+      .app
+        #infobox.infobox
+        #map To get this app to work you need to share your geolocation.
+
+
+
+
+  script.
+    var local_user =   !{JSON.stringify(user_name)} ;  
+    //alert((local_user));
+
+
+  script(src='/javascripts/leaflet.js')
+  //script(src='/javascripts/application.js')

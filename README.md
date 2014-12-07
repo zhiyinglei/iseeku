@@ -9,8 +9,9 @@ Register -> Add Friends -> See Your Friends On Map
 4. in the project root directory, run 'npm install'
 5. run 'node app.js' to start the application. 
 
-Any problem please contact me with zhiyinglei@yahoo.com. Enjoy. 
+Please contact me with any questions or comments you may have. E-mail: zhiyinglei@yahoo.com
 
 Demo: 
 http://map.hoyee.com/  
-(Please Use Chrome and Firefox for best result)
+(Please Use Chrome and Firefox for best result)   
+

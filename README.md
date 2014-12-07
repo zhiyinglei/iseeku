@@ -10,3 +10,6 @@ Register -> Add Friends -> See Your Friends On Map
 5. run 'node app.js' to start the application. 
 
 Any problem please contact me with zhiyinglei@yahoo.com. Enjoy. 
+
+Demo is below: 
+map.hoyee.com 

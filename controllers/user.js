@@ -13,12 +13,10 @@ exports.regForm = function (req, res) {
 
 
 exports.reg_post = function (req, res) {
-    //检验用户两次输入的口令是否一致
     if (req.body['password-repeat'] != req.body['password']) {
          req.flash('error', 'Two password do not agree');
          return res.redirect('/reg');
     }
-    //生成口令的散列值
     var md5 = crypto.createHash('md5');
     var password = md5.update(req.body.password).digest('base64');
     var newUser = new User({
@@ -26,7 +24,6 @@ exports.reg_post = function (req, res) {
          password: password,
     });
 
-    //检查用户名是否已经存在
     User.get(newUser.name, function(err, user) {
          console.log("hello world22222");
          if (user)
@@ -36,7 +33,6 @@ exports.reg_post = function (req, res) {
              req.flash('error', err);
              return res.redirect('/reg');
          }
-         //如果不存在则新增用户
          newUser.save(function(err) {
              console.log("hello world333333");
              if (err) {
@@ -79,7 +75,6 @@ exports.login = function (req, res) {
 
 
 exports.login_post = function (req, res) {
-        //生成口令的散列值
         var md5 = crypto.createHash('md5');
         var password = md5.update(req.body.password).digest('base64');
         User.get(req.body.username, function(err, user) {
